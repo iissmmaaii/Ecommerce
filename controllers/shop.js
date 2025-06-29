@@ -1,5 +1,4 @@
 const Product = require('../models/product');
-const stripe = require('stripe')('sk_test_51R4ncJCxjAJwVrUv2LP4Z2gvHUsfZsXiuAZCiby3pfhRaPeJvfyCoaJd7kjnPEcS0j445l3jDlEn8qcVidumrfgp00UW6CCvEI');
 
 exports.getProducts = (req, res, next) => {
   Product.findAll()
