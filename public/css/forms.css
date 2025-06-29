@@ -1,0 +1,155 @@
+/* ملف forms.css - معدل */
+.form-control {
+  margin: 1rem 0;
+}
+
+.form-control label,
+.form-control input,
+.form-control textarea {
+  display: block;
+  width: 100%;
+  margin-bottom: 0.25rem;
+}
+
+.product-form {
+  width: 20rem;
+  max-width: 90%;
+  margin: auto;
+  display: block;
+}
+
+/* تنسيق خاص لزر اختيار الملف */
+.form-control input[type="file"] {
+  border: 1px dashed #00695c; /* حدود متقطعة باللون الأخضر الداكن */
+  background-color: #f5f5f5;
+  padding: 0.5rem;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.form-control input[type="file"]:hover {
+  background-color: #e0f2f1; /* لون خلفية فاتح عند التحويم */
+  border-color: #004d40;
+}
+
+/* تنسيق النص داخل زر الاختيار */
+.form-control input[type="file"]::file-selector-button {
+  padding: 0.5rem 1rem;
+  background-color: #00695c;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-right: 1rem;
+  transition: background-color 0.3s ease;
+}
+
+.form-control input[type="file"]::file-selector-button:hover {
+  background-color: #004d40;
+}
+
+/* بقية التنسيقات كما هي */
+.product-item {
+  width: 20rem;
+  max-width: 95%;
+  margin: 1rem;
+}
+
+.product__title {
+  font-size: 1.2rem;
+  text-align: center;
+}
+
+.product__price {
+  text-align: center;
+  color: #4d4d4d;
+  margin-bottom: 0.5rem;
+}
+
+.product__description {
+  text-align: center;
+}
+
+.card__image {
+  width: 300px;
+  height: 200px;
+  overflow: hidden;
+  position: relative;
+  border-radius: 8px;
+  margin: 0 auto;
+}
+
+.card__image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+  transition: transform 0.3s ease;
+}
+
+.card__image:hover img {
+  transform: scale(1.05);
+}
+
+.form-control input,
+.form-control textarea {
+  border: 1px solid #a1a1a1;
+  font: inherit;
+  border-radius: 2px;
+}
+
+.form-control input:focus,
+.form-control textarea:focus {
+  outline-color: #00695c;
+}
+/* ملف forms.css - النسخة المحسنة */
+.form-control input[type="file"] {
+  border: 2px dashed #009688; /* تغيير اللون إلى تدرج أخضر أكثر حيوية */
+  background-color: #f5f5f5;
+  padding: 1rem;
+  border-radius: 8px; /* زوايا أكثر استدارة */
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  text-align: center;
+}
+
+/* نص مخصص بدلًا من "Choose File" */
+.form-control input[type="file"]::before {
+  content: "📷 Select a product image"; /* إضافة أيقونة ونص مخصص */
+  display: block;
+  color: #009688;
+  font-weight: 600;
+  padding: 0.5rem;
+}
+
+/* إخفاء النص الافتراضي */
+.form-control input[type="file"]::-webkit-file-upload-button {
+  visibility: hidden;
+  width: 0;
+  padding: 0;
+}
+
+/* تأثير التحويم */
+.form-control input[type="file"]:hover {
+  background-color: #e0f2f1;
+  border-color: #00796b;
+  box-shadow: 0 4px 12px rgba(0, 150, 136, 0.2); /* إضافة ظل ناعم */
+}
+
+/* تأثير عند الاختيار */
+.form-control input[type="file"]:active {
+  transform: scale(0.98); /* تأثير ضغط بسيط */
+}
+
+/* رسالة عند اختيار ملف */
+.form-control .file-selected {
+  display: block;
+  margin-top: 0.5rem;
+  color: #00796b;
+  font-size: 0.9rem;
+  font-style: italic;
+}

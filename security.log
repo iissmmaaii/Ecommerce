@@ -1,0 +1,11 @@
+[ERROR][2025-04-30T19:29:55.447Z] Error: misconfigured csrf
+    at csrf (D:\E-commerce\node_modules\csurf\index.js:71:19)
+    at Layer.handle [as handle_request] (D:\E-commerce\node_modules\express\lib\router\layer.js:95:5)
+    at trim_prefix (D:\E-commerce\node_modules\express\lib\router\index.js:328:13)
+    at D:\E-commerce\node_modules\express\lib\router\index.js:286:9
+    at Function.process_params (D:\E-commerce\node_modules\express\lib\router\index.js:346:12)
+    at next (D:\E-commerce\node_modules\express\lib\router\index.js:280:10)
+    at session (D:\E-commerce\node_modules\express-session\index.js:487:7)
+    at Layer.handle [as handle_request] (D:\E-commerce\node_modules\express\lib\router\layer.js:95:5)
+    at trim_prefix (D:\E-commerce\node_modules\express\lib\router\index.js:328:13)
+    at D:\E-commerce\node_modules\express\lib\router\index.js:286:9
