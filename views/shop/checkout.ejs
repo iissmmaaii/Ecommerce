@@ -1,235 +1,307 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Complete Payment Process</title>
-    <link rel="stylesheet" href="/css/payment.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/payment.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
 </head>
 <body>
-    <div class="payment-wrapper">
-        <div class="payment-container">
-            <div class="payment-header">
-                <h1><i class="fas fa-shopping-cart"></i> Complete Purchase Process</h1>
-            </div>
-            
-            <div class="payment-grid">
-                <!-- Order Summary -->
-                <div class="order-summary">
-                    <h2><i class="fas fa-list-alt"></i> Order Summary</h2>
-                    <div class="products-list">
-                        <% products.forEach(function(product) { %>
-                            <div class="product-item">
-                                <img src="<%= product.imageUrl %>" alt="<%= product.title %>" class="product-image">
-                                <div class="product-details">
-                                    <h3><%= product.title %></h3>
-                                    <p><%= product.cartItem.quantity %> × <%= product.price.toFixed(2) %> $</p>
-                                </div>
-                                <div class="product-total">
-                                    <%= (product.cartItem.quantity * product.price).toFixed(2) %> $
-                                </div>
-                            </div>
-                        <% }); %>
-                    </div>
+  <div class="payment-wrapper">
+    <div class="payment-container">
+      <div class="payment-header">
+        <h1><i class="fas fa-shopping-cart"></i> Complete Purchase Process</h1>
+      </div>
 
-                    <div class="summary-totals">
-                        <div class="total-row">
-                            <span>Subtotal:</span>
-                            <span><%= totalSum.toFixed(2) %> $</span>
-                        </div>
-                        <div class="total-row">
-                            <span>Shipping:</span>
-                            <span>Free</span>
-                        </div>
-                        <div class="total-row grand-total">
-                            <span>Grand Total:</span>
-                            <span><%= totalSum.toFixed(2) %> $</span>
-                        </div>
-                    </div>
+      <div class="payment-grid">
+        <!-- Order Summary -->
+        <div class="order-summary">
+          <h2><i class="fas fa-list-alt"></i> Order Summary</h2>
+          <div class="products-list">
+            <% products.forEach(function(product) { %>
+              <div class="product-item">
+                <img
+                  src="<%= product.imageUrl %>"
+                  alt="<%= product.title %>"
+                  class="product-image"
+                />
+                <div class="product-details">
+                  <h3><%= product.title %></h3>
+                  <p><%= product.cartItem.quantity %> × <%= product.price.toFixed(2) %> $</p>
                 </div>
-
-                <!-- Payment Form -->
-                <div class="payment-section">
-                    <input type="hidden" name="_csrf" value="<%= crsfToken %>">
-                    <h2><i class="fas fa-credit-card"></i> Payment Information</h2>
-                    
-                    <form id="payment-form" class="payment-form">
-                        <div class="form-group">
-                            <label for="username"><i class="fas fa-user"></i> Username</label>
-                            <input type="text" id="username" name="username" required placeholder="Enter username">
-                        </div>
-
-                        <div class="form-group">
-                            <label for="email"><i class="fas fa-envelope"></i> Email</label>
-                            <input type="email" id="email" name="email" required placeholder="Enter your email">
-                        </div>
-
-                        <div class="form-group">
-                            <label for="card-number"><i class="fas fa-credit-card"></i> Card Number</label>
-                            <input type="text" id="card-number" name="cardNumber" placeholder="1234 5678 9012 3456" required>
-                            <div id="card-number-error" class="error-message"></div>
-                        </div>
-
-                        <div class="form-row">
-                            <div class="form-group half-width">
-                                <label><i class="fas fa-calendar-alt"></i> Expiry Date</label>
-                                <input type="text" id="card-expiry" name="cardExpiry" placeholder="MM/YY" required>
-                            </div>
-                            <div class="form-group half-width">
-                                <label><i class="fas fa-lock"></i> CVV</label>
-                                <input type="password" id="card-cvv" name="cardCvv" placeholder="123" required>
-                            </div>
-                            <input type="hidden" id="totalSum" name="totalSum" value="<%= totalSum %>">
-                        </div>
-
-                        <button type="submit" class="submit-btn">
-                            <i class="fas fa-lock"></i> Confirm Payment ($)
-                        </button>
-                        
-                        <div class="payment-methods">
-                            <div class="payment-method">
-                                <i class="fab fa-cc-visa"></i>
-                            </div>
-                            <div class="payment-method">
-                                <i class="fab fa-cc-mastercard"></i>
-                            </div>
-                        </div>
-                    </form>
+                <div class="product-total">
+                  <%= (product.cartItem.quantity * product.price).toFixed(2) %> $
                 </div>
+              </div>
+            <% }); %>
+          </div>
+
+          <div class="summary-totals">
+            <div class="total-row">
+              <span>Subtotal:</span>
+              <span><%= totalSum.toFixed(2) %> $</span>
             </div>
+            <div class="total-row">
+              <span>Shipping:</span>
+              <span>Free</span>
+            </div>
+            <div class="total-row grand-total">
+              <span>Grand Total:</span>
+              <span><%= totalSum.toFixed(2) %> $</span>
+            </div>
+          </div>
         </div>
-    </div>
 
-    <script>
-        document.getElementById('payment-form').addEventListener('submit', async function(e) {
-            e.preventDefault();
-            
-            console.clear(); // Clear old console
-            console.log('----- Starting payment process -----');
-            
-            // Card validation
-            const cardNumber = document.getElementById('card-number').value.replace(/\s/g, '');
-            console.log('Entered card number:', cardNumber);
-            
-            if (!/^\d{16}$/.test(cardNumber)) {
-                const errorMsg = 'Card number must be 16 digits';
-                console.error('❌ Card error:', errorMsg);
-                document.getElementById('card-number-error').textContent = errorMsg;
-                return;
-            }
-    
-            const submitBtn = document.querySelector('.submit-btn');
-            const originalBtnText = submitBtn.innerHTML;
-            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Processing...';
-            submitBtn.disabled = true;
-    
-            try {
-                // Convert amount to number
-                const amount = parseFloat(document.getElementById('totalSum').value);
-                console.log('Converted amount:', amount);
-                
-                if (isNaN(amount)) {
-                    const errorMsg = 'Invalid amount value';
-                    console.error('❌ Amount error:', errorMsg);
-                    throw new Error(errorMsg);
-                }
-    
-                const paymentData = {
-                    username: document.getElementById('username').value.trim(),
-                    email: document.getElementById('email').value.trim(),
-                    cardNumber: cardNumber,
-                    cardExpiry: document.getElementById('card-expiry').value.trim(),
-                    cardCvv: document.getElementById('card-cvv').value.trim(),
-                    amount: amount,
-                    timestamp: new Date().toISOString()
-                };
-    
-                console.log('📦 Prepared payment data:', JSON.stringify(paymentData, null, 2));
-    
-                // Data validation
-                if (!paymentData.username || !paymentData.email || !paymentData.cardExpiry || !paymentData.cardCvv) {
-                    const errorMsg = 'Please fill all required fields';
-                    console.error('❌ Missing data:', errorMsg);
-                    throw new Error(errorMsg);
-                }
-    
-                // Send request
-                console.log('🔄 Sending payment request...');
-                const response = await fetch('http://localhost:3001/api/process-payment', {
-                    method: 'POST',
-                    headers: { 
-                        'Content-Type': 'application/json',
-                        'Accept': 'application/json'
-                    },
-                    credentials: 'include',
-                    body: JSON.stringify(paymentData)
-                });
-    
-                console.log('✅ Received response, HTTP status:', response.status, response.statusText);
-    
-                if (!response.ok) {
-                    const errorData = await response.json().catch(() => ({}));
-                    const errorMsg = errorData.message || `Server error: ${response.status}`;
-                    console.error('❌ Server error details:', {
-                        status: response.status,
-                        statusText: response.statusText,
-                        error: errorData,
-                        url: response.url
-                    });
-                    throw new Error(errorMsg);
-                }
-    
-                const result = await response.json();
-                console.log('🎉 Operation result:', JSON.stringify(result, null, 2));
-                
-                if (!result.success) {
-                    const errorMsg = result.message || 'Payment failed';
-                    console.error('❌ Operation failure:', errorMsg);
-                    throw new Error(errorMsg);
-                }
-    
-                console.log('✨ Operation succeeded, reference ID:', result.transactionId);
-                alert(`Operation succeeded! Reference ID: ${result.transactionId}`);
-                fetch('/cart/delete', {
-  method: 'POST',
-  headers: {
-    'Content-Type': 'application/json',
-    'CSRF-Token': document.querySelector('input[name="_csrf"]').value
-  },
-  credentials: 'include' // إذا كنت تستخدم الجلسات/الكوكيز
-})
-.then(response => {
-  if (response.ok) {
-    window.location.href = '/'; // التحويل بعد النجاح
-  } else {
-    throw new Error('فشل في حذف السلة');
-  }
-})
-.catch(error => {
-  console.error('Error:', error);
-  alert('حدث خطأ أثناء حذف السلة');
-});
-    
-            } catch (error) {
-                console.error('🔥 Payment process error:', {
-                    message: error.message,
-                    stack: error.stack,
-                    time: new Date().toISOString(),
-                    errorObject: error
-                });
-                
-                alert(`Error: ${error.message}\nPlease try again`);
-            } finally {
-                console.log('----- Finished processing request -----');
-                submitBtn.innerHTML = originalBtnText;
-                submitBtn.disabled = false;
-            }
-        });
-    
-        // Script loaded confirmation
-        console.log('✅ Payment script loaded successfully');
-    </script>
+        <!-- Payment Form -->
+        <div class="payment-section">
+          <input type="hidden" name="_csrf" value="<%= crsfToken %>" />
+          <h2><i class="fas fa-credit-card"></i> Payment Information</h2>
+
+          <form id="payment-form" class="payment-form">
+            <div class="form-group">
+              <label for="username"><i class="fas fa-user"></i> Username</label>
+              <input
+                type="text"
+                id="username"
+                name="username"
+                required
+                placeholder="Enter username"
+              />
+            </div>
+
+            <div class="form-group">
+              <label for="email"><i class="fas fa-envelope"></i> Email</label>
+              <input
+                type="email"
+                id="email"
+                name="email"
+                required
+                placeholder="Enter your email"
+              />
+            </div>
+
+            <div class="form-group">
+              <label for="card-number"><i class="fas fa-credit-card"></i> Card Number</label>
+              <input
+                type="text"
+                id="card-number"
+                name="cardNumber"
+                placeholder="1234 5678 9012 3456"
+                required
+              />
+              <div id="card-number-error" class="error-message"></div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group half-width">
+                <label><i class="fas fa-calendar-alt"></i> Expiry Date</label>
+                <input
+                  type="text"
+                  id="card-expiry"
+                  name="cardExpiry"
+                  placeholder="MM/YY"
+                  required
+                />
+              </div>
+              <div class="form-group half-width">
+                <label><i class="fas fa-lock"></i> CVV</label>
+                <input
+                  type="password"
+                  id="card-cvv"
+                  name="cardCvv"
+                  placeholder="123"
+                  required
+                />
+              </div>
+              <input
+                type="hidden"
+                id="totalSum"
+                name="totalSum"
+                value="<%= totalSum %>"
+              />
+            </div>
+
+            <button type="submit" class="submit-btn">
+              <i class="fas fa-lock"></i> Confirm Payment ($)
+            </button>
+
+            <div class="payment-methods">
+              <div class="payment-method">
+                <i class="fab fa-cc-visa"></i>
+              </div>
+              <div class="payment-method">
+                <i class="fab fa-cc-mastercard"></i>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- تحميل مكتبة socket.io client -->
+  <script src="https://cdn.socket.io/4.6.1/socket.io.min.js"></script>
+
+  <script>
+    document
+      .getElementById("payment-form")
+      .addEventListener("submit", async function (e) {
+        e.preventDefault();
+
+        console.clear();
+        console.log("----- بدء معالجة الدفع -----");
+
+        const cardNumber = document
+          .getElementById("card-number")
+          .value.replace(/\s/g, "");
+        console.log("📥 رقم البطاقة المُدخل:", cardNumber);
+
+        if (!/^\d{16}$/.test(cardNumber)) {
+          const errorMsg = "رقم البطاقة يجب أن يكون 16 رقمًا";
+          console.error("❌ خطأ البطاقة:", errorMsg);
+          document.getElementById("card-number-error").textContent = errorMsg;
+          return;
+        } else {
+          document.getElementById("card-number-error").textContent = "";
+        }
+
+        const submitBtn = document.querySelector(".submit-btn");
+        const originalBtnText = submitBtn.innerHTML;
+        submitBtn.innerHTML =
+          '<i class="fas fa-spinner fa-spin"></i> جاري المعالجة...';
+        submitBtn.disabled = true;
+
+        try {
+          const amount = parseFloat(document.getElementById("totalSum").value);
+          console.log("💵 القيمة المُحوّلة:", amount);
+
+          if (isNaN(amount)) {
+            throw new Error("القيمة غير صالحة");
+          }
+
+          const paymentData = {
+            username: document.getElementById("username").value.trim(),
+            email: document.getElementById("email").value.trim(),
+            cardNumber: cardNumber,
+            cardExpiry: document.getElementById("card-expiry").value.trim(),
+            cardCvv: document.getElementById("card-cvv").value.trim(),
+            amount: amount,
+            timestamp: new Date().toISOString(),
+          };
+
+          console.log("📦 البيانات المرسلة:", JSON.stringify(paymentData, null, 2));
+
+          if (
+            !paymentData.username ||
+            !paymentData.email ||
+            !paymentData.cardExpiry ||
+            !paymentData.cardCvv
+          ) {
+            throw new Error("يرجى تعبئة جميع الحقول المطلوبة");
+          }
+
+          // إرسال الطلب إلى السيرفر البنكي
+          console.log("🔄 إرسال الطلب إلى البنك...");
+          const response = await fetch("http://localhost:3001/api/process-payment", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+              Accept: "application/json",
+            },
+            credentials: "include",
+            body: JSON.stringify(paymentData),
+          });
+
+          console.log(
+            "📬 تم استلام الرد من البنك:",
+            response.status,
+            response.statusText
+          );
+
+          if (!response.ok) {
+            const errorData = await response.json().catch(() => ({}));
+            const errorMsg = errorData.message || `خطأ في الخادم: ${response.status}`;
+            throw new Error(errorMsg);
+          }
+
+          const result = await response.json();
+          console.log("✅ نتيجة العملية:", result);
+
+          if (!result.success) {
+            throw new Error(result.message || "فشل إرسال طلب الدفع");
+          }
+
+          // ✔️ عرض رسالة للمستخدم: بانتظار موافقة صاحب البطاقة
+          alert(
+            "تم إرسال طلب الدفع بنجاح، بانتظار موافقة صاحب البطاقة من التطبيق."
+          );
+
+          // 🗑️ حذف السلة بعد الإرسال (اختياري)
+          await fetch("/cart/delete", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+              "CSRF-Token": document.querySelector('input[name="_csrf"]').value,
+            },
+            credentials: "include",
+          });
+
+          // الاستماع لنتيجة الدفع عبر WebSocket
+          listenToPaymentResult(result.transactionId);
+
+          // 🔁 تحويل المستخدم للصفحة الرئيسية (ممكن تحطها بعد انتظار النتيجة)
+          // window.location.href = '/';
+
+        } catch (error) {
+          console.error("🔥 خطأ أثناء الدفع:", {
+            message: error.message,
+            stack: error.stack,
+            time: new Date().toISOString(),
+          });
+
+          alert(`حدث خطأ: ${error.message}\nيرجى المحاولة مرة أخرى`);
+        } finally {
+          console.log("----- نهاية المعالجة -----");
+          submitBtn.innerHTML = originalBtnText;
+          submitBtn.disabled = false;
+        }
+      });
+
+    // دالة WebSocket للاستماع لنتيجة الدفع
+    function listenToPaymentResult(transactionId) {
+      const socket = io("http://localhost:3001"); // عنوان سيرفر البنك مع WebSocket
+
+      socket.on("connect", () => {
+        console.log("🔌 متصل بسيرفر البنك عبر WebSocket");
+        socket.emit("join-transaction", transactionId);
+      });
+
+      socket.on("payment-result", (data) => {
+        console.log("📲 استلمت نتيجة الدفع:", data);
+
+        if (data.status === "approved") {
+          alert("تمت الموافقة على الدفع!");
+        } else if (data.status === "rejected") {
+          alert("تم رفض الدفع.");
+        }
+
+        socket.disconnect();
+      });
+
+      socket.on("disconnect", () => {
+        console.log("❌ تم قطع الاتصال بسيرفر البنك");
+      });
+    }
+
+    console.log("✅ تم تحميل سكربت الدفع بنجاح");
+  </script>
 </body>
 </html>
